@@ -34,9 +34,9 @@ function concertThis(arg){
             return console.log("no results found");
         }
         for (i = 0; i<JSON.parse(body).length && i < 5; i++){
-            console.log(JSON.parse(body)[i].venue.name)
-            console.log(JSON.parse(body)[i].venue.city + ", " + JSON.parse(body)[i].venue.country)
-            console.log(moment(JSON.parse(body)[i].datetime).format("MM/DD/YYYY"))
+            console.log("\nVenue: "+JSON.parse(body)[i].venue.name)
+            console.log("City: "+JSON.parse(body)[i].venue.city + ", " + JSON.parse(body)[i].venue.country)
+            console.log("Date: "+moment(JSON.parse(body)[i].datetime).format("MM/DD/YYYY"))
         }
     })
 }
@@ -50,10 +50,10 @@ function spotifyThisSong(arg){
           return console.log('Error occurred: ' + err);
         }
 
-        console.log(data.tracks.items[0].artists[0].name)
-        console.log(data.tracks.items[0].name)
-        console.log(data.tracks.items[0].external_urls.spotify)
-        console.log(data.tracks.items[0].album.name)
+        console.log("\nArtist: "+data.tracks.items[0].artists[0].name)
+        console.log("Song: "+data.tracks.items[0].name)
+        console.log("URL: "+data.tracks.items[0].external_urls.spotify)
+        console.log("Album: "+data.tracks.items[0].album.name)
     })
 }
 
@@ -63,14 +63,14 @@ function movieThis(arg){
     }
     request("http://www.omdbapi.com/?t="+arg+"&y=&plot=short&apikey=trilogy", function(error, response, body) {        
         if (!error && response.statusCode === 200) {
-            console.log(JSON.parse(body).Title);
-            console.log(JSON.parse(body).Year);
-            console.log(JSON.parse(body).imdbRating);
-            console.log(JSON.parse(body).Ratings[1].Value);
-            console.log(JSON.parse(body).Country);
-            console.log(JSON.parse(body).Language);
-            console.log(JSON.parse(body).Plot);
-            console.log(JSON.parse(body).Actors);
+            console.log("\nMovie: "+JSON.parse(body).Title);
+            console.log("Year released:" +JSON.parse(body).Year);
+            console.log("imdb Rating: "+JSON.parse(body).imdbRating);
+            console.log("Rotten Tomato score: "+JSON.parse(body).Ratings[1].Value);
+            console.log("Countries: "+JSON.parse(body).Country);
+            console.log("Language(s): "+JSON.parse(body).Language);
+            console.log("Plot: "+JSON.parse(body).Plot);
+            console.log("Actors: "+JSON.parse(body).Actors);
         }
     });
 }
